@@ -14,7 +14,7 @@ class CustomFirestoreServices {
       await firestore.doc(path).set(data);
     } catch (e) {
       log(e.toString());
-      throw Exception(e);
+      throw Exception("Failed to add note: ${e.toString()}");
     }
   }
 

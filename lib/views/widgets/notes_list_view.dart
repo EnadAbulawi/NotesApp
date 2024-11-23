@@ -38,21 +38,38 @@ class _NotesListViewState extends State<NotesListView> {
         ],
       );
     }
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, // عدد الأعمدة
-          crossAxisSpacing: 5,
-          mainAxisSpacing: 5,
-          // childAspectRatio: 3,
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: GridView.builder(
+            shrinkWrap: true,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2, // عدد الأعمدة
+              crossAxisSpacing: 5,
+              mainAxisSpacing: 5,
+              childAspectRatio: 1 / 1,
+              // childAspectRatio: 3,
+            ),
+            itemCount: widget.notes.length,
+            itemBuilder: (context, index) {
+              final note = widget.notes[index];
+              return NoteCard(note: note);
+            },
+          ),
         ),
-        itemCount: widget.notes.length,
-        itemBuilder: (context, index) {
-          final note = widget.notes[index];
-          return NoteCard(note: note);
-        },
-      ),
+        const Spacer(),
+        Text(
+          'العدد الكلي للملاحظات : ${widget.notes.length}',
+          style: AppFontsStyle.expoRegular.copyWith(
+            fontSize: 14,
+            color: Colors.white.withOpacity(0.5),
+          ),
+        ),
+        const SizedBox(
+          height: 12,
+        )
+      ],
     );
   }
 }

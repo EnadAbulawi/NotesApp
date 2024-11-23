@@ -10,8 +10,8 @@ class CustomSvgContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-          width: 45,
-          height: 45,
+          width: 40,
+          height: 40,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
               color: const Color(0xff3B3B3B)),

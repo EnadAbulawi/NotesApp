@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:notesapp/utils/app_fonts.dart';
+import 'package:notesapp/views/screens/search_screen.dart';
+import 'package:notesapp/views/widgets/custom_svg_container.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({super.key});
@@ -12,27 +14,19 @@ class CustomAppBar extends StatelessWidget {
       child: Row(
         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                color: Color(0xff3B3B3B)),
-            child: SvgPicture.asset(
-              'assets/images/info.svg',
-              fit: BoxFit.scaleDown,
-            ),
+          const CustomSvgContainer(
+            imagepath: 'assets/images/info.svg',
           ),
           const SizedBox(width: 12),
-           Container(
-            width: 40,
-            height: 40,
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(15)),
-                color: Color(0xff3B3B3B)),
-            child: SvgPicture.asset(
-              'assets/images/search.svg',
-              fit: BoxFit.scaleDown,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),));
+            },
+            child: const CustomSvgContainer(
+              imagepath: 'assets/images/search.svg',
             ),
           ),
           const Spacer(),
